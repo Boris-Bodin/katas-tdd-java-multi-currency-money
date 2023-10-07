@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.money.Dollar;
+import org.example.money.Euro;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,6 +14,13 @@ public class MultiCurrencyAppTest {
         Dollar dollar = new Dollar(5);
         assertEquals(new Dollar(10), dollar.times(2));
         assertEquals(new Dollar(15), dollar.times(3));
+    }
+
+    @Test
+    public void testEuroMultipication() {
+        Euro euro = new Euro(5);
+        assertEquals(new Euro(10), euro.times(2));
+        assertEquals(new Euro(15), euro.times(3));
     }
 
     @Test
