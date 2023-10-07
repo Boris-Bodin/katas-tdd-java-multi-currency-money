@@ -11,10 +11,8 @@ public class MultiCurrencyAppTest {
     @Test
     public void testMultipication() {
         Dollar dollar = new Dollar(5);
-        Dollar product = dollar.times(2);
-        assertEquals(10, product.amount);
-        product = dollar.times(3);
-        assertEquals(15, product.amount);
+        assertEquals(new Dollar(10), dollar.times(2));
+        assertEquals(new Dollar(15), dollar.times(3));
     }
 
     @Test
