@@ -10,7 +10,9 @@ public class MultiCurrencyAppTest {
     @Test
     public void testMultipication() {
         Dollar dollar = new Dollar(5);
-        dollar.times(2);
-        assertEquals(10, dollar.amount);
+        Dollar product = dollar.times(2);
+        assertEquals(10, product.amount);
+        product = dollar.times(3);
+        assertEquals(15, product.amount);
     }
 }
