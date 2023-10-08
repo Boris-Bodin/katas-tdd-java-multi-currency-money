@@ -1,6 +1,7 @@
 package org.example.money;
 
 import org.example.expression.Expression;
+import org.example.expression.Sum;
 
 public class Money implements Expression {
 
@@ -24,8 +25,12 @@ public class Money implements Expression {
         return new Money(this.amount * multiplier, this.currency);
     }
 
-    public Money plus(Money addend) {
-        return new Money(this.amount + addend.amount, this.currency);
+    public Sum plus(Money addend) {
+        return new Sum(this, addend);
+    }
+
+    public int amount() {
+        return this.amount;
     }
 
     public String currency() {
@@ -41,5 +46,10 @@ public class Money implements Expression {
     @Override
     public String toString() {
         return this.amount + " " + this.currency;
+    }
+
+    @Override
+    public Money reduce(String to) {
+        return this;
     }
 }

@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.bank.Bank;
 import org.example.expression.Expression;
+import org.example.expression.Sum;
 import org.example.money.Money;
 import org.junit.jupiter.api.Test;
 
@@ -37,5 +38,13 @@ public class MultiCurrencyAppTest {
         Bank bank = new Bank();
         Money reduced = bank.reduce(sum, "USD");
         assertEquals(Money.dollar(10), reduced);
+    }
+
+    @Test
+    public void testReduceSum() {
+        Expression sum = new Sum(Money.dollar(3), Money.dollar(4));
+        Bank bank = new Bank();
+        Money result = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(7), result);
     }
 }
