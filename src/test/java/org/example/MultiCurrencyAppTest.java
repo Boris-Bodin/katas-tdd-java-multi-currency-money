@@ -27,5 +27,7 @@ public class MultiCurrencyAppTest {
     public void testEquality() {
         assertEquals(new Dollar(5), new Dollar(5));
         assertNotEquals(new Dollar(6), new Dollar(8));
+        assertEquals(new Euro(5), new Euro(5));
+        assertNotEquals(new Euro(6), new Euro(8));
     }
 }
