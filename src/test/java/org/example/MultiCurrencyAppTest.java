@@ -32,4 +32,10 @@ public class MultiCurrencyAppTest {
         assertNotEquals(Money.euro(6), Money.euro(8));
         assertNotEquals(Money.dollar(5), Money.euro(5));
     }
+
+    @Test
+    public void testCurrency() {
+        assertEquals("USD", Money.dollar(1).currency());
+        assertEquals("EUR", Money.euro(1).currency());
+    }
 }
