@@ -33,7 +33,7 @@ public class MultiCurrencyAppTest {
 
     @Test
     public void testSimpleAddition() {
-        Money five = Money.dollar(5);
+        Expression five = Money.dollar(5);
         Expression sum = five.plus(five);
         Bank bank = new Bank();
         Money reduced = bank.reduce(sum, "USD");
@@ -59,5 +59,32 @@ public class MultiCurrencyAppTest {
     @Test
     public void testIdentityRate() {
         assertEquals(1, new Bank().rate("USD", "USD"));
+    }
+
+    @Test
+    public void testAddition() {
+        Expression sum = Money.dollar(5).plus(Money.euro(10));
+        Bank bank = new Bank();
+        bank.addRate("EUR", "USD", 2);
+        Money reduced = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(10), reduced);
+    }
+
+    @Test
+    public void testMultipleAddition() {
+        Expression sum = Money.dollar(5).plus(Money.euro(10)).plus(Money.dollar(5));
+        Bank bank = new Bank();
+        bank.addRate("EUR", "USD", 2);
+        Money reduced = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(15), reduced);
+    }
+
+    @Test
+    public void testSumTimes() {
+        Expression sum = Money.dollar(5).plus(Money.euro(10)).times(2);
+        Bank bank = new Bank();
+        bank.addRate("EUR", "USD", 2);
+        Money reduced = bank.reduce(sum, "USD");
+        assertEquals(Money.dollar(20), reduced);
     }
 }
