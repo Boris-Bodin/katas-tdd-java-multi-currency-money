@@ -1,5 +1,6 @@
 package org.example.money;
 
+import org.example.bank.Bank;
 import org.example.expression.Expression;
 import org.example.expression.Sum;
 
@@ -49,7 +50,8 @@ public class Money implements Expression {
     }
 
     @Override
-    public Money reduce(String to) {
-        return this;
+    public Money reduce(Bank bank, String to) {
+        int rate = bank.rate(this.currency, to);
+        return new Money(amount / rate, to);
     }
 }

@@ -1,7 +1,8 @@
 package org.example.expression;
 
+import org.example.bank.Bank;
 import org.example.money.Money;
 
 public interface Expression {
-    Money reduce(String to);
+    Money reduce(Bank bank, String to);
 }
